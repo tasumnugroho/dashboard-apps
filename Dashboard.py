@@ -5,6 +5,7 @@ import streamlit as st
 from babel.numbers import format_currency
 sns.set(style='dark')
 
+st.set_page_config(page_title='Dashboard', page_icon=':bar_chart:', layout='wide')
 
 def create_daily_orders_df(df):
     daily_orders_df = df.resample(rule='D', on='order_purchase_timestamp').agg({
@@ -135,7 +136,7 @@ ax.plot(
     daily_orders_df["order_count"],
     marker='o', 
     linewidth=2,
-    color="#90CAF9"
+    color="#7eb0d5"
 )
 ax.tick_params(axis='y', labelsize=20)
 ax.tick_params(axis='x', labelsize=15)
@@ -148,7 +149,7 @@ st.subheader("# Best & Worst Performing Product")
  
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(35, 15))
  
-colors = ["#90CAF9", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
+colors = ["#7eb0d5", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
  
 sns.barplot(x="product_id", y="product_category_name_english", data=sum_order_items_df.head(5), palette=colors, ax=ax[0])
 ax[0].set_ylabel(None)
@@ -174,7 +175,7 @@ st.pyplot(fig)
 st.subheader("# Customer Demographics")
 
 fig, ax = plt.subplots(figsize=(20, 10))
-colors = ["#90CAF9", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
+colors = ["#7eb0d5", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
 sns.barplot(
     x="customer_count", 
     y="customer_state",
@@ -194,7 +195,7 @@ st.pyplot(fig)
 st.subheader("# Seller Demographics")
 
 fig, ax = plt.subplots(figsize=(20, 10))
-colors = ["#90CAF9", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
+colors = ["#7eb0d5", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
 sns.barplot(
     x="seller_count", 
     y="seller_state",
@@ -211,7 +212,7 @@ st.pyplot(fig)
 
 #-----#
 
-st.subheader("Best Customer Based on RFM Parameters")
+st.subheader("# Best Customer Based on RFM Parameters")
  
 col1, col2, col3 = st.columns(3)
  
@@ -228,7 +229,7 @@ with col3:
     st.metric("Average Monetary", value=avg_frequency)
  
 fig, ax = plt.subplots(nrows=3, ncols=1, figsize=(75, 65))
-colors = ["#90CAF9", "#90CAF9", "#90CAF9", "#90CAF9", "#90CAF9"]
+colors = ('#fd7f6f', '#8bd3c7', '#b2e061', '#7eb0d5', '#bd7ebe')
  
 sns.barplot(y="recency", x="customer_id", data=rfm_df.sort_values(by="recency", ascending=True).head(5), palette=colors, ax=ax[0])
 ax[0].set_ylabel(None)
@@ -255,7 +256,7 @@ st.pyplot(fig)
  
 #-----#
 
-st.subheader("Best Seller Based on RFM Parameters")
+st.subheader("# Best Seller Based on RFM Parameters")
  
 col1, col2, col3 = st.columns(3)
  
@@ -272,7 +273,7 @@ with col3:
     st.metric("Average Monetary", value=avg_frequency)
  
 fig, ax = plt.subplots(nrows=3, ncols=1, figsize=(75, 65))
-colors = ["#90CAF9", "#90CAF9", "#90CAF9", "#90CAF9", "#90CAF9"]
+colors = ('#fd7f6f', '#8bd3c7', '#b2e061', '#7eb0d5', '#bd7ebe')
  
 sns.barplot(y="recency", x="seller_id", data=rfmseller_df.sort_values(by="recency", ascending=True).head(5), palette=colors, ax=ax[0])
 ax[0].set_ylabel(None)
