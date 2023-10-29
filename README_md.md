@@ -24,4 +24,4 @@ streamlit run Dashboard.py
 
 ## Hasil Running (URL)
 
-![dashboard.jpg](data:image/jpg;/dashboard/dashboard.jpg "Gb Dashboard")
+![dashboard.jpg](/dashboard/dashboard.jpg "Gb Dashboard")
